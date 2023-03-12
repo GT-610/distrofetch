@@ -779,7 +779,7 @@ image_source="auto"
 #
 # Default: 'auto'
 # Values:  'auto', 'distro_name'
-# Flag:    --ascii_distro
+# Flag:    --ascii-distro
 # NOTE: AIX, Hash, Alpine, AlterLinux, Amazon, Anarchy, Android, instantOS,
 #       Antergos, antiX, "AOSC OS", "AOSC OS/Retro", Apricity, ArchCraft,
 #       ArcoLinux, ArchBox, ARCHlabs, ArchStrike, XFerience, ArchMerge, Arch,
@@ -826,7 +826,7 @@ ascii_distro="auto"
 #
 # Default:  'distro'
 # Values:   'distro', 'num' 'num' 'num' 'num' 'num' 'num'
-# Flag:     --ascii_colors
+# Flag:     --ascii-colors
 #
 # Example:
 # ascii_colors=(distro)      - Ascii is colored based on Distro colors.
@@ -5136,8 +5136,8 @@ IMAGE BACKEND:
     '/path/to/ascii', '/path/to/dir/'
 
 ASCII:
-    --ascii_colors x x x x x x  Colors to print the ascii art
-    --ascii_distro distro       Which Distro's ascii art to print
+    --ascii-colors x x x x x x  Colors to print the ascii art
+    --ascii-distro distro       Which Distro's ascii art to print
 
                                 NOTE: AIX, Hash, Alpine, AlterLinux, Amazon, Anarchy, Android,
                                 instantOS, Antergos, antiX, \"AOSC OS\", \"AOSC OS/Retro\",
@@ -5384,7 +5384,7 @@ get_args() {
                 exit
             ;;
 
-            "--ascii_colors")
+            "--ascii-colors")
                 unset ascii_colors
                 for arg in "$2" "$3" "$4" "$5" "$6" "$7"; do
                     case $arg in
@@ -5395,7 +5395,7 @@ get_args() {
                 ascii_colors+=(7 7 7 7 7 7)
             ;;
 
-            "--ascii_distro")
+            "--ascii-distro")
                 image_backend="ascii"
                 ascii_distro="$2"
             ;;
