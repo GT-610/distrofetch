@@ -3,7 +3,7 @@
 # shellcheck source=/dev/null
 # shellcheck disable=2009
 #
-# Neofetch: A command-line system information tool written in bash 3.2+.
+# Distrofetch: A fork of neofetch, command-line system information tool written in bash 3.2+, but with more distributions.
 # https://github.com/dylanaraps/neofetch
 #
 # The MIT License (MIT)
