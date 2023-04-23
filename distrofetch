@@ -813,7 +813,7 @@ image_source="auto"
 # NOTE: Ubuntu has flavor variants.
 #       Change this to Lubuntu, Kubuntu, Xubuntu, Ubuntu-GNOME,
 #       Ubuntu-Studio, Ubuntu-Mate  or Ubuntu-Budgie to use the flavors.
-# NOTE: Arcolinux, Dragonfly, Fedora, Alpine, Arch, Ubuntu,
+# NOTE: Arcolinux, CuteOS, Dragonfly, Fedora, Alpine, Arch, Ubuntu,
 #       CRUX, Debian, Gentoo, FreeBSD, Mac, NixOS, OpenBSD, android,
 #       Artix, CentOS, Cleanjaro, ElementaryOS, GUIX, Hyperbola,
 #       Manjaro, MXLinux, NetBSD, Parabola, POP_OS, PureOS,
@@ -5146,7 +5146,7 @@ ASCII:
                                 BlackArch, BLAG, BlankOn, BlueLight, Bodhi, bonsai, BSD, BunsenLabs,
                                 Calculate, Carbs, CentOS, Chakra, ChaletOS, Chapeau, Chrom,
                                 Cleanjaro, ClearOS, Clear_Linux, Clover, Condres, Container_Linux,
-                                Crystal Linux, CRUX, Cucumber, dahlia, Debian, Deepin, DesaOS, Devuan,
+                                Crystal Linux, CRUX, Cucumber, CuteOS, dahlia, Debian, Deepin, DesaOS, Devuan,
                                 DracOS, DarkOs, Itc, DragonFly, Drauger, Elementary, EndeavourOS, Endless,
                                 EuroLinux, Exherbo, Fedora, Feren, FreeBSD, FreeMiNT, Frugalware,
                                 Funtoo, GalliumOS, Garuda, Gentoo, Pentoo, GhostBSD, gNewSense, GNOME, GNU,
@@ -5179,7 +5179,7 @@ ASCII:
                                 Ubuntu-Studio, Ubuntu-Mate  or Ubuntu-Budgie to use the flavors.
 
                                 NOTE: Arcolinux, Dragonfly, Fedora, Alpine, Arch, Ubuntu,
-                                CRUX, Debian, Gentoo, FreeBSD, Mac, NixOS, OpenBSD, android,
+                                CRUX, CuteOS, Debian, Gentoo, FreeBSD, Mac, NixOS, OpenBSD, android,
                                 Artix, CentOS, Cleanjaro, ElementaryOS, GUIX, Hyperbola,
                                 Manjaro, MXLinux, NetBSD, Parabola, POP_OS, PureOS,
                                 Slackware, SunOS, LinuxLite, OpenSUSE, Raspbian,
@@ -7002,23 +7002,29 @@ EOF
         ;;
 
        "CuteOS"*)
-                    set_colors 33 50 57
+                    set_colors 33 50 5 3 9 42 5 2
                     read -rd '' ascii_data <<'EOF'
-${c2}
-                       ${c3}1ua${c2}
-                  ${c3}MMM1ua${c2}
- ${c1}MM${c2}EE        ${c3} MMMMM1uazE${c2}
-${c1}MM ${c2}EEEE     ${c3}M1MM1uazzEn ${c2}EEEE  MME
-    EEEEE  ${c3}MMM uazEno ${c2}EEEE
-    EEEEE${c1}MMMMMMEno~; ${c2}EE          E${c2}
-     EE ${c1}MMMMMMMM~;;E  ${c2}MMMMM      M ${c2}
-     E ${c1}MMMMMMMMM          ${c2}  E  E   ${c2}
-      ${c1}MMMMMMMMMMM
-           ${c1}MMMMMMMMM ${c2}EE ${c1}
-                MM1MMMM ${c2}EEE ${c1}
-                     MMMMM
-                          MMM
-                              M
+${c4}                                                   
+        MMMMMMMMM      ${c5}WWWWWWWWWW                 
+${c4}      MMMMMMMMMMM${c3}UUUUUUUU${c5}WWWWWWWWWWW              
+${c4}      MMMMMMMMM${c3}UUUUUUUUUUUUUUU${c5}WWWWWWWW            
+${c4}      MMMMMMM${c3}UUUUUUUUUUUUUUUUUUUUU${c5};;;;            
+${c4}      MMMMM${c3}UUUUUUUUUUUUUUUUUU                     
+${c4}${c4}       MMM${c3}UUUUUUUUUUUUUUU                         
+   ${c1}KN  ${c4}MM${c3}UUUUUUUUUUUUU                            
+   ${c1}NNNN ${c5}UMMMMMMMMMMMM         ${c3}UUUUUU              
+     ${c3}WW ${c5}UUMMMMMMMMMv       ${c3};UUUUUUU       ${c5}NKv   ${c5}  
+        UUUMMMMMMMN      ${c3} MMMMMMM        ${c1}KKKK${c2}111  ${c5}
+        MMMMMMMMMMn      ${c3} MMMMM         ${c1}KKKKK${c2}111  ${c5}
+        MMMMMMMMMNn                   ${c1} 1KKKKK${c2}1111  ${c5}
+         MMMMMMMM${c5}mmm                ${c1} imKKKKKm${c2}1111 ${c5} 
+          NNNNNNN${c5}mmmmmn            ${c1}mmm ${c1}KKKKK${c2}11111 ${c5}  
+            NNNNNN${c5}mmmmmmmmmmmmmmm ${c1}mmm ${c1}nnnnn${c2}111   ${c5}    
+             MNNNN${c5}mmmmmmmmmmmmmmmmm ${c1}vvvN  ${c5}         
+                vvv${c5}mmmmmmmmmmmmmm ${c1}Kvv ${c5}    ${c3}vvv      
+                   ${c5}1mmmmmmmmmmmm1                 
+                    ${c5}3iiiiiiiiii                   
+                      ${c5}iiiiiii                                                                              
 EOF
         ;;
 
