@@ -4,7 +4,7 @@
 # shellcheck disable=2009
 #
 # Distrofetch: A fork of neofetch, command-line system information tool written in bash 3.2+, but with more distributions.
-# https://github.com/dylanaraps/neofetch
+# https://codeberg.org/GT610/distrofetch
 #
 # The MIT License (MIT)
 #
@@ -11128,7 +11128,7 @@ ${c1}         _
 EOF
         ;;
 
-        "Ubuntu"* | "i3buntu"*)
+        "Ubuntu-old"* | "i3buntu"*)
             set_colors 1 7 3
             read -rd '' ascii_data <<'EOF'
 ${c1}            .-/+oossssoo+\-.
@@ -11151,6 +11151,59 @@ oss${c2}yNMMMNyMMh${c1}sssssssssssssshmmmh${c1}ssssssso
       -+sssssssssssssssss${c2}yyy${c1}ssss+-
         `:+ssssssssssssssssss+:`
             .-\+oossssoo+/-.
+EOF
+        ;;
+
+        "Ubuntu"*)
+            set_colors 1
+            read -rd '' ascii_data <<'EOF'
+${c1}                             ....
+              .',:clooo:  .:looooo:.
+           .;looooooooc  .oooooooooo'
+        .;looooool:,''.  :ooooooooooc
+       ;looool;.         'oooooooooo,
+      ;clool'             .cooooooc.  ,,
+         ...                ......  .:oo,
+  .;clol:,.                        .loooo'
+ :ooooooooo,                        'ooool
+'ooooooooooo.                        loooo.
+'ooooooooool                         coooo.
+ ,loooooooc.                        .loooo.
+   .,;;;'.                          ;ooooc
+       ...                         ,ooool.
+    .cooooc.              ..',,'.  .cooo.
+      ;ooooo:.           ;oooooooc.  :l.
+       .coooooc,..      coooooooooo.
+         .:ooooooolc:. .ooooooooooo'
+           .':loooooo;  ,oooooooooc
+               ..';::c'  .;loooo:'
+                             .
+EOF
+        ;;
+
+        "Ultramarine Linux"* | "ultramarine"*)
+            set_colors 4 7
+            read -rd '' ascii_data <<'EOF'
+${c1}            .cd0NNNNNNNXOdc.
+        .:xKNNNNNNNNNNNNNNNNKd;.
+      ,dXNNNNNNNNNNNNNNNNNNNNNNNd,
+    'ONNNNNNNNNNNNNNNNNNNNNNNNNNNNO'
+  .xNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNk.
+ .0NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN0.
+.0NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN0.
+dNNNNNNNNNNNNWWWWWWWWNNNNNNNNNNNNNNNNNNd
+NNNNNNNNNNNNNW${c2}MMMMMMMM${c1}WWNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNW${c2}MMMMMMMMM${c1}WWNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNW${c2}MMMMMMMMMMMM${c1}WNNNNNNNNNNNN
+NNNNNNNNNNWWW${c2}MMMMMMMMMMMMMMMM${c1}WWWNNNNNNNX
+oNWWWW${c2}MMMMMMMMMMMMMMMMMMMMMMMMMMMM${c1}WWWNNo
+ OW${c2}MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM${c1}WO
+ .OW${c2}MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM${c1}WO.
+   lNW${c2}MMMMMMMMMMMMMMMMMMMMMMMMMMMM${c1}WNl
+    .dNW${c2}MMMMMMMMMMMMMMMMMMMMMMMM${c1}WNd.
+      .cKW${c2}MMMMMMMMMMMMMMMMMMMM${c1}WKc.
+         'oOXWWW${c2}MMMMMMMM${c1}WWWXOl.
+             ;lkXNNNNNNXkl'
 EOF
         ;;
 
