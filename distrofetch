@@ -8,7 +8,7 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2015-2021 Dylan Araps
+# Copyright (c) 2015-2023 Dylan Araps
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-version=7.1.1
+version=7.3.0
 
 # Fallback to a value of '5' for shells which support bash
 # but do not set the 'BASH_' shell variables (osh).
@@ -1101,6 +1101,16 @@ get_distro() {
                 fi
             fi
 
+           # For OPNsense
+            if [[ -f "/usr/local/opnsense/version/opnsense" ]]; then
+                case "$distro_shorthand" in
+                    "on" | "tiny") distro="OPNsense" ;;
+                    *)
+                        distro=$(<"/usr/local/opnsense/version/opnsense")
+                        distro="OPNsense ${distro%-*}"
+                esac
+            fi
+
             if [[ $(< /proc/version) == *Microsoft* || $kernel_version == *Microsoft* ]]; then
                 windows_version=$(wmic.exe os get Version)
                 windows_version=$(trim "${windows_version/Version}")
@@ -1244,11 +1254,7 @@ get_model() {
                 model+=" $(< /sys/devices/virtual/dmi/id/board_name)"
 
             elif [[ -f /sys/devices/virtual/dmi/id/product_name ||
-                    -f /sys/devices/virtual/dmi/id/product_version ]]; then
-                model=$(< /sys/devices/virtual/dmi/id/product_name)
-                model+=" $(< /sys/devices/virtual/dmi/id/product_version)"
-
-            elif [[ -f /sys/firmware/devicetree/base/model ]]; then
+                    -f /sys/firmware/devicetree/base/model ]]; then
                 model=$(< /sys/firmware/devicetree/base/model)
 
             elif [[ -f /tmp/sysinfo/model ]]; then
@@ -5447,7 +5453,6 @@ get_args() {
                 print_info() {
                     info title
                     info underline
-
                     info "OS" distro
                     info "Host" model
                     info "Kernel" kernel
@@ -5466,7 +5471,6 @@ get_args() {
                     info "GPU" gpu
                     info "GPU Driver" gpu_driver
                     info "Memory" memory
-
                     info "Disk" disk
                     info "Battery" battery
                     info "Font" font
@@ -5474,7 +5478,6 @@ get_args() {
                     info "Local IP" local_ip
                     info "Public IP" public_ip
                     info "Users" users
-
                     info cols
 
                     # Testing.
@@ -9386,6 +9389,32 @@ yM+         dM/+NNo`     :Md         +My
       :hMdo.                .odMh:
         .+hMNho/:..``..:/ohNMh+.
             -+shdmNNNNmdhs+-
+EOF
+        ;;
+
+       "OPNsense"*)
+            set_colors 7 202
+            read -rd '' ascii_data <<'EOF'
+${c1}    .'''''''''''''''''''''''''''''''''''
+  oocc:::::::::::::::::::::::::::::::cox
+ ;00;                                o0O
+ .,:'  .;;;;;;;;;;;;;;;;;;;;;;;;;;   ;:,
+  .',;;cxOOOOOOOOOOOOOOOOOOOOOOOkd:;;,..
+     .,cll:'                 ':llc,.
+    ,;;:okxdxd:           :dxdxko:;;,
+   .xxxx0XNNK0O.         .O0KNNX0xxxx.
+       ,${c2}cc:${c1},.               .,${c2}:cc${c1},
+ ........;${c2}ccc:${c1};.         .;${c2}:ccc${c1};........
+ ${c2}ccccccccccccccc         ccccccccccccccc${c1}
+ ........;${c2}ccc:${c1};.         .;${c2}:ccc${c1};........
+       ,${c2}cc:${c1},.               .,${c2}:cc${c1},
+   .xxxx0XNNK0O.         .O0KNNX0xxxx.
+    ,;;:okxdxd:           :dxdxko:;;,
+     .,cll:'                 ':llc,.
+  .,,;,ckOOOOOOOOOOOOOOOOOOOOOOOOx;,;,'.
+ .:l'  ...........................   ;:;
+ lOk'                                cdd
+ ;lccccccccccccccccccccccccccccccccccc:.
 EOF
         ;;
 
