@@ -972,40 +972,65 @@ get_distro() {
     case $os in
         Linux|BSD|MINIX)
             if [[ -f /bedrock/etc/bedrock-release && -z $BEDROCK_RESTRICT ]]; then
+                # Bedrock Linux
                 case $distro_shorthand in
                     on|tiny) distro="Bedrock Linux" ;;
                     *) distro=$(< /bedrock/etc/bedrock-release)
                 esac
 
             elif [[ -f /etc/redstar-release ]]; then
+                #Red Star OS
                 case $distro_shorthand in
                     on|tiny) distro="Red Star OS" ;;
                     *) distro="Red Star OS $(awk -F'[^0-9*]' '$0=$2' /etc/redstar-release)"
                 esac
-
+            elif [[ -f /etc/KrassOS.version ]]; then
+                # KrassOS
+                case $distro_shorthand in
+                    on|tiny) distro="KrassOS" ;;
+                    *) distro="KrassOS $(awk '/release/{print $2}' /etc/KrassOS.version)"
+                esac
+            
             elif [[ -f /etc/armbian-release ]]; then
+                # Armbian
                 . /etc/armbian-release
                 distro="Armbian $DISTRIBUTION_CODENAME (${VERSION:-})"
 
             elif [[ -f /etc/siduction-version ]]; then
+                # Siduction
                 case $distro_shorthand in
                     on|tiny) distro=Siduction ;;
                     *) distro="Siduction ($(lsb_release -sic))"
                 esac
 
             elif [[ -f /etc/mcst_version ]]; then
+                # OS Elbrus
                 case $distro_shorthand in
                     on|tiny) distro="OS Elbrus" ;;
                     *) distro="OS Elbrus $(< /etc/mcst_version)"
                 esac
 
             elif type -p pveversion >/dev/null; then
+                # Proxmox VE
                 case $distro_shorthand in
                     on|tiny) distro="Proxmox VE" ;;
                     *)
                         distro=$(pveversion)
                         distro=${distro#pve-manager/}
                         distro="Proxmox VE ${distro%/*}"
+                esac
+
+            elif [[ -f /etc/GoboLinuxVersion ]]; then
+                # GoboLinux
+                case $distro_shorthand in
+                    on|tiny) distro=GoboLinux ;;
+                    *) distro="GoboLinux $(< /etc/GoboLinuxVersion)"
+                esac
+
+            elif [[ -f /etc/SDE-VERSION ]]; then
+                distro="$(< /etc/SDE-VERSION)"
+                case $distro_shorthand in
+                    on|tiny) distro="${distro% *}" ;;
                 esac
 
             elif type -p lsb_release >/dev/null; then
@@ -1032,18 +1057,6 @@ get_distro() {
                     on)   distro="${NAME:-${DISTRIB_ID}} ${VERSION_ID:-${DISTRIB_RELEASE}}" ;;
                     tiny) distro="${NAME:-${DISTRIB_ID:-${TAILS_PRODUCT_NAME}}}" ;;
                     off)  distro="${PRETTY_NAME:-${DISTRIB_DESCRIPTION}} ${UBUNTU_CODENAME}" ;;
-                esac
-
-            elif [[ -f /etc/GoboLinuxVersion ]]; then
-                case $distro_shorthand in
-                    on|tiny) distro=GoboLinux ;;
-                    *) distro="GoboLinux $(< /etc/GoboLinuxVersion)"
-                esac
-
-            elif [[ -f /etc/SDE-VERSION ]]; then
-                distro="$(< /etc/SDE-VERSION)"
-                case $distro_shorthand in
-                    on|tiny) distro="${distro% *}" ;;
                 esac
 
             elif type -p crux >/dev/null; then
@@ -5178,7 +5191,7 @@ ASCII:
                                 EuroLinux, Exherbo, Fedora, Feren, FreeBSD, FreeMiNT, Frugalware,
                                 Funtoo, GalliumOS, Garuda, Gentoo, Pentoo, GhostBSD, gNewSense, GNOME, GNU,
                                 GoboLinux, Grombyang, Guix, Haiku, Huayra, Hyperbola, iglunix, janus, Kali,
-                                KaOS, KDE_neon, Kibojoe, Kogaion, Korora, KSLinux, Kubuntu, LEDE,
+                                KaOS, KDE_neon, Kibojoe, Kogaion, Korora, KSLinux, KrassOS, Kubuntu, LEDE,
                                 LaxerOS, LibreELEC, LFS, Linux_Lite, LMDE, Lubuntu, Lunar, macos,
                                 Mageia, MagpieOS, Mandriva, Manjaro, TeArch, Maui, Mer, Minix, LinuxMint,
                                 Live_Raizo, MX_Linux, Namib, NekOS, Neptune, NetBSD, Netrunner, Nitrux,
@@ -8288,6 +8301,33 @@ ${c2}  SSS   AAA  W   W  AAA
 EOF
         ;;
 
+       *"KrassOS"*|*"Krass"*)
+            set_colors 4 7
+            read -rd '' ascii_data <<'EOF'
+                                                  
+${c1}                  ${c2}**@@@@@@@@@@@*                  
+             ${c2},@@@@%${c1}(((((((((((((${c2}%@@@@,            
+          ${c2}#@@&${c1}(((((((((((((((((((((((${c2}&@@%         
+        ${c2}@@&${c1}(((((((((((((((((((((((((((((${c2}@@@       
+      ${c2}@@&${c1}(((((((((((((((((((((((((((((((((${c2}&@@     
+    ${c2}.@@${c1}(((((((((((((((((((((((((((((((((((((${c2}@@.   
+    ${c2}@@${c1}(((((((((((((((((((((((((((((((((((((((${c2}@@   
+   ${c2}@@#${c1}(((((((((((((((((((((((((((((${c2}%@@@@@@@#${c1}(#${c2}@@  
+  ${c2}.@@${c1}((((((((((((((((${c2}#%@@@@@@@@@&%#${c1}((((${c2}%@&${c1}((((${c2}@@. 
+  ${c2}.@@${c1}(((((((/(${c2}&@@@@@@%${c1}(/((((((((((((((${c2}@@/${c1}(((((${c2}@@. 
+  ${c2}.@@${c1}(///////////////////////////////${c2}@${c1}(///////${c2}@@  
+   ${c2}%@#${c1}/////////////////////////////(${c2}#${c1}////////${c2}%@%  
+   ${c2} @@${c1}(///////////////////////////${c2}%${c1}/////////(${c2}@@   
+     ${c2}@@#${c1}***********************************${c2}%@@    
+      ${c2}*@@${c1}********************************${c2}/@@/     
+        ${c2},@@#${c1}***************************${c2}%@@*       
+           ${c2}@@@&${c1}********************${c2}/@@@@          
+               ${c2}&@@@@&${c1}(//***//(${c2}&@@@@&              
+${c1}                  ${c2}**@@@@@@@@@@@*                    
+                  
+EOF
+        ;;
+        
         "Kubuntu"*)
             set_colors 4 7 1
             read -rd '' ascii_data <<'EOF'
