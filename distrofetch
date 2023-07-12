@@ -1305,7 +1305,7 @@ get_model() {
                 iPad13,[4-7]):       "iPad Pro 3 (11 Inch)" ;;
                 iPad13,[8-9]|1[0-1]):"iPad Pro 5 (12.9 Inch)" ;;
                 iPad13,1[6-7]):      "iPad Air 5" ;;
-                iPad13,1[8-9]);      "iPad 10" ;;
+                iPad13,1[8-9]):      "iPad 10" ;;
                 iPad14,[3-4]):       "iPad Pro 4 (11 Inch)" ;;
                 iPad14,[5-6]):       "iPad Pro 6 (12.9 Inch)" ;;   
 
